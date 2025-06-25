@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>A Floresta de Eldoria</title>
+  <style>
+    body {
+      background-color: #1c1f2b;
+      color: #f0f0f0;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .passo {
+      display: none;
+    }
+
+    .ativo {
+      display: block;
+    }
+
+    .btn-proximo {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn-proximo:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>A Floresta de Eldoria</h1>
+
+    <div id="passo-0" class="passo ativo">
+      <p>Você encontra um antigo mapa escondido em um livro velho. Ele aponta para Eldoria, uma floresta mágica e misteriosa. Dizem que ela guarda um artefato capaz de mudar o destino do mundo.</p>
+      <button class="btn-proximo" data-proximo="passo-1">Entrar na floresta</button>
+    </div>
+
+    <div id="passo-1" class="passo">
+      <p>Logo no início da trilha, você encontra uma bifurcação. Um caminho segue à esquerda, coberto por névoa. O outro à direita, iluminado por uma luz dourada.</p>
+      <button class="btn-proximo" data-proximo="passo-2">Seguir pela névoa</button>
+      <button class="btn-proximo" data-proximo="passo-3">Seguir pela luz</button>
+    </div>
+
+    <div id="passo-2" class="passo">
+      <p>Você adentra a névoa e se perde. Sons estranhos surgem ao seu redor. De repente, um vulto aparece... é uma criatura das sombras! Você tenta fugir, mas tudo escurece.</p>
+      <p><strong>Fim?</strong></p>
+      <button class="btn-proximo" data-proximo="passo-0">Recomeçar</button>
+    </div>
+
+    <div id="passo-3" class="passo">
+      <p>Você segue a luz e encontra uma clareira com um altar antigo. No centro, uma esfera flutuante brilha com uma energia mágica. Você sente que algo importante está prestes a acontecer...</p>
+      <p><strong>Continua...</strong></p>
+      <button class="btn-proximo" data-proximo="passo-0">Recomeçar</button>
+    </div>
+
+  </main>
+
+  <script>
+    const botoes = document.querySelectorAll('.btn-proximo');
+
+    botoes.forEach(botao => {
+      botao.addEventListener('click', () => {
+        const proximoId = botao.getAttribute('data-proximo');
+        document.querySelectorAll('.passo').forEach(div => {
+          div.classList.remove('ativo');
+        });
+        document.getElementById(proximoId).classList.add('ativo');
+      });
+    });
+  </script>
+
+</body>
+</html>
